@@ -16,7 +16,6 @@ A monolithic solidity source file has these properties:
 2. Exactly one `contract` is defined.
    - Logically follows: The contract does not inherit from any other contract.
    - Note: One or more `interface`s *may* be defined.
-   - Note: Before solidity 0.5.0 is released, this proporty will be relaxed to allow a `contract` if that `contract` behaves identically to an `interface` with the additional feature of inheritance (see [solidity issue #3419](https://github.com/ethereum/solidity/issues/3419))
 3. No `modifier` is defined.
 4. Every function of the contract is `external`.
    1. Logically follows: No function will call any other function.
@@ -27,7 +26,6 @@ It stands to reason that any solidity file can be transformed into a monolithic 
 
 - The contract to deploy has a circular function call.
 - The solidity file fails to compile before transformation.
-- Different source files use different versions of solidity.
 
 ## Work plan
 
@@ -37,7 +35,7 @@ Each feature in this work plan transforms a valid solidity file into another val
 
   - [ ] The program will exit with status 1 if the file fails to compile
 
-- [x] Feature: unroll all `imports`
+- [ ] Feature: unroll all `imports`
 
   - At this time we will not implement this feature
 
@@ -361,7 +359,7 @@ Each feature in this work plan transforms a valid solidity file into another val
     }
     ```
 
-- [ ] Feature: the ContractToDeploy shall be kept, a contract/interface whos type is referenced by a kept contract/interface shall be kept, all other contracts/interfaces shall be removed
+- [ ] Feature: the ContractToDeploy shall be kept, an interface whos type is referenced by a kept contract/interface shall be kept, all other contracts/interfaces shall be removed
 
   - Note: this feature is not part of the minimal viable product
 
